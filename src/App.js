@@ -59,7 +59,7 @@ function App() {
      <div className='temperatureWrapper'>
 
     <p className='temperature'>{temperature}</p>
-    <img src={imgSource} alt="imagem da temperatura" />
+    <img className='image' src={imgSource} alt="imagem da temperatura" />
 
      </div>
     
