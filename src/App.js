@@ -12,12 +12,14 @@ function App() {
   const [imgSource, setImgSource] = useState()
 
   async function fetchTemperature() {
-    const {data} = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=ee5c7911c1e7469b985133338222701&q=-22.12,%20-45.05&days=1`)
-    
-    const {current} = data
-    
-    setTemperature(Math.round(current.temp_c).toFixed(0) + 'º')
-    setImgSource(current.condition.icon)
+    const {data} = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=-22.11&lon=-45.05&appid=f5074c7a55386895a37bbedfbb872512&units=metric`)
+    // const {current} = 
+    const icon = data.weather[0].icon
+
+    console.log('first')
+
+    setTemperature(Math.round(data.main.temp).toFixed(0) + 'º')
+    setImgSource(`http://openweathermap.org/img/w/${icon}.png`)
 
   }
 
@@ -27,6 +29,13 @@ function App() {
     }
 
     fetchData()
+
+    const interval = setInterval(() => fetchData(), 600000); // 10 minutos
+
+    return () => {
+      clearInterval(interval)
+    }
+
 
   }, [temperature, imgSource])
 
@@ -45,7 +54,7 @@ function App() {
 
      
    
-     <h1 className='title'>Tempo São Lourenço</h1>
+     <h1 className='title'>São Lourenço</h1>
 
      <div className='temperatureWrapper'>
 
