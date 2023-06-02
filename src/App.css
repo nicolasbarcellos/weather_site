@@ -39,5 +39,13 @@ body {
   background-color: #121214;
   font-family: 'Roboto', sans-serif;
   color: #fff;
+  width: 432px;
+  height: 288px;
+}
+
+html {
+  width: 432px;
+  height: 288px;
+
 }
 
